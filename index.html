@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="icon" href="./media/imagenes/favicon.png" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="page-grid">
+      <header class="page-header">
+        <div class="left">
+          <h1 class="page-logo">Javascript</h1>
+        </div>
+        <nav class="nav-bar">
+          <button class="nav-button">Home</button>
+          <button class="nav-button">Calculator</button>
+          <button class="nav-button">Grid</button>
+        </nav>
+        <div class="right">
+          <button class="border-button contact">Contact</button>
+        </div>
+      </header>
+      <section class="top-section">
+        <div class="top-section-container">
+          <div class="top-left">
+            <div class="title">
+              <h1 class="page-title">Pagina Web Interactiva</h1>
+            </div>
+          </div>
+          <div class="play-music">
+            <button class="play-button">
+              <i class="play-pause fa-solid fa-circle-play"></i>
+            </button>
+            <h4 class="play-music-text">PLAY MUSIC</h4>
+            <audio class="music" src="./media/musica/amongus-theme.mp3"></audio>
+          </div>
+          <img class="cd" src="./media/imagenes/amongus_cd.svg" alt="" />
+        </div>
+      </section>
+      <section class="calculator">
+        <h1 class="section-title">Calculator</h1>
+        <table>
+          <tr>
+            <th>Nota</th>
+            <th>Materia</th>
+            <th>Grado</th>
+          </tr>
+          <tr>
+            <td>
+              <input class="nota1 nota-input" type="text" />
+            </td>
+            <td>
+              <p class="materia">Programacion</p>
+            </td>
+            <td>
+              <div class="grado-cont">
+                <div class="grado1 grado"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input class="nota2 nota-input" type="text" />
+            </td>
+            <td>
+              <p class="materia">Calculo</p>
+            </td>
+            <td>
+              <div class="grado-cont">
+                <div class="grado2 grado"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input class="nota3 nota-input" type="text" />
+            </td>
+            <td>
+              <p class="materia">Fisica</p>
+            </td>
+            <td>
+              <div class="grado-cont">
+                <div class="grado3 grado"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <div>
+                <p class="total">Total</p>
+              </div>
+            </td>
+            <td>
+              <div class="resultado">
+                <div class="promedio-color"></div>
+                <p class="promedio">00</p>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </section>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
