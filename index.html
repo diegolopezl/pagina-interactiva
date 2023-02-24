@@ -23,8 +23,8 @@
         </div>
         <nav class="nav-bar">
           <button class="nav-button">Home</button>
-          <button class="nav-button">Calculator</button>
-          <button class="nav-button">Grid</button>
+          <button class="nav-button scroll-to-calc">Calculator</button>
+          <button class="nav-button scroll-to-sb">Soundboard</button>
         </nav>
         <div class="right">
           <button class="border-button contact">Contact</button>
@@ -56,8 +56,8 @@
             <th>Grado</th>
           </tr>
           <tr>
-            <td>
-              <input class="nota1 nota-input" type="text" />
+            <td class="nota-container">
+              <input class="nota1 nota-input" type="text" maxlength="3" />
             </td>
             <td>
               <p class="materia">Programacion</p>
@@ -70,7 +70,7 @@
           </tr>
           <tr>
             <td>
-              <input class="nota2 nota-input" type="text" />
+              <input class="nota2 nota-input" type="text" maxlength="3" />
             </td>
             <td>
               <p class="materia">Calculo</p>
@@ -83,7 +83,7 @@
           </tr>
           <tr>
             <td>
-              <input class="nota3 nota-input" type="text" />
+              <input class="nota3 nota-input" type="text" maxlength="3" />
             </td>
             <td>
               <p class="materia">Fisica</p>
@@ -95,7 +95,9 @@
             </td>
           </tr>
           <tr>
-            <td></td>
+            <td>
+              <button class="reset-btn">RESET</button>
+            </td>
             <td>
               <div>
                 <p class="total">Total</p>
@@ -109,6 +111,95 @@
             </td>
           </tr>
         </table>
+      </section>
+      <section class="soundboard">
+        <h1 class="section-title">Sound Board</h1>
+        <section class="button-grid">
+          <div>
+            <button class="sound-button">
+              <img class="sound-img" src="" alt="" />
+              <audio class="sound-audio" src=""></audio>
+            </button>
+            <p class="sound-text"></p>
+          </div>
+          <div>
+            <button class="sound-button">
+              <img class="sound-img" src="" alt="" />
+              <audio class="sound-audio" src=""></audio>
+            </button>
+            <p class="sound-text"></p>
+          </div>
+          <div>
+            <button class="sound-button">
+              <img class="sound-img" src="" alt="" />
+              <audio class="sound-audio" src=""></audio>
+            </button>
+            <p class="sound-text"></p>
+          </div>
+          <div>
+            <button class="sound-button">
+              <img class="sound-img" src="" alt="" />
+              <audio class="sound-audio" src=""></audio>
+            </button>
+            <p class="sound-text"></p>
+          </div>
+          <div>
+            <button class="sound-button">
+              <img class="sound-img" src="" alt="" />
+              <audio class="sound-audio" src=""></audio>
+            </button>
+            <p class="sound-text"></p>
+          </div>
+          <div>
+            <button class="sound-button">
+              <img class="sound-img" src="" alt="" />
+              <audio class="sound-audio" src=""></audio>
+            </button>
+            <p class="sound-text"></p>
+          </div>
+          <div>
+            <button class="sound-button">
+              <img class="sound-img" src="" alt="" />
+              <audio class="sound-audio" src=""></audio>
+            </button>
+            <p class="sound-text"></p>
+          </div>
+          <div>
+            <button class="sound-button">
+              <img class="sound-img" src="" alt="" />
+              <audio class="sound-audio" src=""></audio>
+            </button>
+            <p class="sound-text"></p>
+          </div>
+          <div>
+            <button class="sound-button">
+              <img class="sound-img" src="" alt="" />
+              <audio class="sound-audio" src=""></audio>
+            </button>
+            <p class="sound-text"></p>
+          </div>
+          <div>
+            <button class="sound-button">
+              <img class="sound-img" src="" alt="" />
+              <audio class="sound-audio" src=""></audio>
+            </button>
+            <p class="sound-text"></p>
+          </div>
+          <div>
+            <button class="sound-button">
+              <img class="sound-img" src="" alt="" />
+              <audio class="sound-audio" src=""></audio>
+            </button>
+            <p class="sound-text"></p>
+          </div>
+          <div>
+            <button class="sound-button">
+              <img class="sound-img" src="" alt="" />
+              <audio class="sound-audio" src=""></audio>
+            </button>
+            <p class="sound-text"></p>
+          </div>
+        </section>
       </section>
     </div>
     <script src="script.js"></script>

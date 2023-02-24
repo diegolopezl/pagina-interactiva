@@ -11,10 +11,18 @@
   font-family: "Space Mono", monospace;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #000000;
   height: 100vh;
   display: grid;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .page-grid {
@@ -148,6 +156,7 @@ body {
   cursor: pointer;
   opacity: 0.9;
 }
+
 .play-button > .fa-solid {
   font-size: 50px;
 }
@@ -161,7 +170,8 @@ body {
   grid-area: cd;
 }
 
-.calculator {
+.calculator,
+.soundboard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -185,11 +195,26 @@ td {
   width: 250px;
 }
 
-.nota-input {
-  color: black;
+.nota-input,
+.reset-btn {
   height: 40px;
   width: 200px;
   border-radius: 50px;
+}
+
+.reset-btn {
+  font-weight: 700;
+  background-color: rgb(92, 149, 255);
+  transition: background-color 0.25s ease-in-out;
+}
+
+.reset-btn:hover {
+  background-color: rgb(59, 102, 183);
+  cursor: pointer;
+}
+
+.nota-input {
+  color: black;
   padding: 0 15px;
   text-align: right;
 }
@@ -202,6 +227,7 @@ td {
   display: flex;
   justify-content: center;
 }
+
 .grado {
   background-color: gray;
   width: 200px;
@@ -224,7 +250,11 @@ td {
 }
 
 .spin {
-  animation: spinning 1s infinite linear;
+  animation: spinning 0.5s infinite linear;
+}
+
+.stop-spin {
+  animation: stop 0.5s ease-in;
 }
 
 @keyframes spinning {
@@ -234,4 +264,52 @@ td {
   100% {
     transform: rotate(360deg);
   }
+}
+
+@keyframes stop {
+  0% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.button-grid {
+  display: grid;
+  grid-template: repeat(3, 150px) / repeat(4, 150px);
+  align-items: center;
+  justify-content: center;
+}
+
+.button-grid > div {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.sound-button {
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+  justify-self: center;
+  background-color: transparent;
+  overflow: hidden;
+  transition: transform 0.25s ease-in-out;
+}
+
+.sound-button:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.sound-button > img {
+  width: inherit;
+  height: inherit;
+}
+
+.sound-text {
+  font-size: 12px;
+  margin-top: 15px;
+  justify-self: center;
 }
