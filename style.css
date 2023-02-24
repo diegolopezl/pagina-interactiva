@@ -27,7 +27,7 @@ body::-webkit-scrollbar {
 
 .page-grid {
   display: grid;
-  grid-template-rows: repeat(5, 750px);
+  grid-template-rows: repeat(4, 750px) 250px;
 }
 
 .page-header {
@@ -171,11 +171,17 @@ body::-webkit-scrollbar {
 }
 
 .calculator,
-.soundboard {
+.soundboard,
+.contact-us {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.contact-us {
+  position: relative;
+  z-index: 1;
 }
 
 .section-title {
@@ -202,14 +208,16 @@ td {
   border-radius: 50px;
 }
 
-.reset-btn {
+.reset-btn,
+.submit-btn {
   font-weight: 700;
-  background-color: rgb(92, 149, 255);
+  background-color: #508cff;
   transition: background-color 0.25s ease-in-out;
 }
 
-.reset-btn:hover {
-  background-color: rgb(59, 102, 183);
+.reset-btn:hover,
+.submit-btn:hover {
+  background-color: #407cea;
   cursor: pointer;
 }
 
@@ -312,4 +320,108 @@ td {
   font-size: 12px;
   margin-top: 15px;
   justify-self: center;
+}
+
+.contact-form {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-input {
+  color: black;
+  border-radius: 15px;
+  width: 250px;
+  height: 50px;
+  padding: 0 15px;
+  margin: 0 5px;
+}
+
+.text-input:focus {
+  outline: none;
+}
+
+.text-message {
+  margin: 15px 5px;
+  color: black;
+  border-radius: 15px;
+  width: 520px;
+  height: 200px;
+  resize: none;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.text-message:focus {
+  outline: none;
+}
+
+.submit-btn {
+  width: 300px;
+  height: 60px;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 15px;
+  justify-self: center;
+}
+
+.invalid-input {
+  border: 2px solid #ff7a7a;
+  color: #ff7a7a;
+}
+
+.contact-element,
+.space-bg {
+  transition: opacity 0.5s ease-in;
+}
+
+.hide-contact {
+  opacity: 0;
+}
+
+.contact-bg {
+  height: 100%;
+  width: 100%;
+}
+
+.space-bg {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.amongus-float {
+  opacity: 0;
+  position: absolute;
+  transform: scale(0.25);
+  z-index: -1;
+  transition: opacity 0.25s ease-in;
+}
+
+.ejected {
+  opacity: 1;
+  animation: ejected 5s linear;
+}
+
+@keyframes ejected {
+  0% {
+    transform: translateX(-150%) scale(0.25) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-75%) scale(0.25) rotate(-180deg);
+  }
+  50% {
+    transform: translateX(0%) scale(0.25) rotate(-360deg);
+  }
+  75% {
+    transform: translateX(75%) scale(0.25) rotate(-540deg);
+  }
+  100% {
+    transform: translateX(150%) scale(0.25) rotate(-720deg);
+  }
 }

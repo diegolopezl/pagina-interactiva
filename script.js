@@ -19,6 +19,16 @@ const textoArray = Array.from(document.querySelectorAll(".sound-text"));
 const imageArray = Array.from(document.querySelectorAll(".sound-img"));
 const audioArray = Array.from(document.querySelectorAll(".sound-audio"));
 
+const contactForm = document.querySelector(".contact-form");
+const email = document.querySelector(".email");
+const nombre = document.querySelector(".name");
+const formMessage = document.querySelector(".text-message");
+const validEmail = /\S+@\S+\.\S+/;
+const contactElement = document.querySelectorAll(".contact-element");
+
+const video = document.querySelector(".space-bg");
+const floatingAmongus = document.querySelector(".amongus-float");
+
 calcNav.addEventListener("click", () => {
   scrollPage(750);
 });
@@ -201,3 +211,57 @@ function addSoundBoardData() {
 }
 
 addSoundBoardData();
+
+contactForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (
+    nombre.value == "" ||
+    email.value == "" ||
+    !email.value.match(validEmail) ||
+    formMessage.value == ""
+  ) {
+    if (nombre.value == "") {
+      nombre.classList.add("invalid-input");
+      nombre.value = "";
+      nombre.placeholder = "Invalid input";
+    }
+    if (email.value == "") {
+      email.classList.add("invalid-input");
+      email.value = "";
+      email.placeholder = "Invalid input";
+    } else if (!email.value.match(validEmail)) {
+      email.classList.add("invalid-input");
+      email.value = "";
+      email.placeholder = "Invalid Email Address!";
+    }
+    if (formMessage.value == "") {
+      formMessage.classList.add("invalid-input");
+      formMessage.value = "";
+      formMessage.placeholder = "Please Enter a Message!";
+    }
+  } else {
+    nombre.value = "";
+    email.value = "";
+    formMessage.value = "";
+    contactElement.forEach((ce) => {
+      ce.classList.add("hide-contact");
+    });
+    video.style.opacity = 1;
+    floatingAmongus.classList.add("ejected");
+  }
+});
+
+email.addEventListener("input", () => {
+  email.classList.remove("invalid-input");
+  email.placeholder = "Email";
+});
+
+nombre.addEventListener("input", () => {
+  nombre.classList.remove("invalid-input");
+  nombre.placeholder = "Nombre";
+});
+
+formMessage.addEventListener("input", () => {
+  formMessage.classList.remove("invalid-input");
+  formMessage.placeholder = "Mensaje";
+});
