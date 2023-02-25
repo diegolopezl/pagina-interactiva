@@ -207,9 +207,14 @@
           src="./media/imagenes/amongus-floating.png"
           alt=""
         />
-        <video class="space-bg" muted>
+        <p class="enviado"></p>
+        <video class="space-bg" loop muted>
           <source src="./media/videos/space-landscape.mp4" type="video/mp4" />
         </video>
+        <audio
+          class="message-sent-audio"
+          src="./media/musica/sent-message.mp3"
+        ></audio>
         <h1 class="section-title contact-element">Contact Us</h1>
         <form class="contact-form contact-element" method="get">
           <div class="name-email">
@@ -220,7 +225,23 @@
           <input type="submit" class="submit-btn" value="SUBMIT" />
         </form>
       </section>
-      <footer></footer>
+      <footer class="page-footer">
+        <div class="contact-info">
+          <p class="info-title">Contact Info</p>
+          <p>+1 (809) 123-4567</p>
+          <p>ejemplo@gmail.com</p>
+          <a href="github.com/diegolopezl">Github</a>
+          <div class="social-media">
+            <i class="fa-brands fa-square-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+        </div>
+        <div class="run">
+          <img src="./media/imagenes/amongus-run.gif" alt="" />
+        </div>
+      </footer>
     </div>
     <script src="script.js"></script>
   </body>

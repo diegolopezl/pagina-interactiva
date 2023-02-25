@@ -28,115 +28,30 @@ const contactElement = document.querySelectorAll(".contact-element");
 
 const video = document.querySelector(".space-bg");
 const floatingAmongus = document.querySelector(".amongus-float");
+const sent = document.querySelector(".enviado");
+const sentAudio = document.querySelector(".message-sent-audio");
 
-calcNav.addEventListener("click", () => {
-  scrollPage(750);
-});
-
-sbNav.addEventListener("click", () => {
-  scrollPage(1500);
-});
-
-contactBtn.addEventListener("click", () => {
-  scrollPage(2250);
-});
-
-playButton.addEventListener("click", () => {
-  if (music.paused) {
-    music.play();
-    playPause.classList.add("fa-circle-pause");
-    playPause.classList.remove("fa-circle-play");
-    cd.classList.add("spin");
-    cd.classList.remove("stop-spin");
-  } else if (music.play) {
-    music.pause();
-    playPause.classList.add("fa-circle-play");
-    playPause.classList.remove("fa-circle-pause");
-    cd.classList.remove("spin");
-    cd.classList.add("stop-spin");
-  }
-});
-
-notasArray.forEach((nota) => {
-  nota.addEventListener("input", (e) => {
-    if (e.target.classList.contains("nota-input")) {
-      color(notasArray.indexOf(e.target));
-    }
-  });
-});
-
-reset.addEventListener("click", () => {
-  resetValues();
-});
+let mensajeEnviado = [
+  "M",
+  "e",
+  "n",
+  "s",
+  "a",
+  "j",
+  "e",
+  " ",
+  "E",
+  "n",
+  "v",
+  "i",
+  "a",
+  "d",
+  "o",
+  ".",
+];
 
 window.addEventListener("load", () => {
   resetValues();
-});
-
-function resetValues() {
-  let color = "gray";
-  notasArray.forEach((e) => {
-    e.value = "";
-  });
-
-  gradoArray.forEach((e) => {
-    e.style.backgroundColor = color;
-  });
-
-  avgColor.style.backgroundColor = color;
-  avg.innerText = "00";
-}
-
-function color(ind) {
-  let color = "gray";
-  let value = notasArray[ind].value;
-  if (value >= 0) {
-    if (value >= 80) {
-      color = "green";
-    } else if (value >= 60 && value <= 79) {
-      color = "yellow";
-    } else {
-      color = "red";
-    }
-  }
-  gradoArray[ind].style.backgroundColor = color;
-  calculoTotal();
-}
-
-function calculoTotal() {
-  const [input1, input2, input3] = notasArray.map((nota) =>
-    parseInt(nota.value)
-  );
-  let color = "gray";
-  if (input1 && input2 && input3) {
-    const average = Math.round((input1 + input2 + input3) / 3);
-    avg.innerText = average;
-    if (average >= 80) {
-      color = "green";
-    } else if (average >= 60 && average <= 79) {
-      color = "yellow";
-    } else {
-      color = "red";
-    }
-  }
-  avgColor.style.backgroundColor = color;
-}
-
-function scrollPage(y) {
-  window.scrollTo(0, y);
-}
-
-soundBtnArray.forEach((button) => {
-  button.addEventListener("click", () => {
-    const ind = soundBtnArray.indexOf(button);
-    const mp3 = audioArray[ind];
-    if (mp3.paused) {
-      mp3.play();
-    } else {
-      mp3.currentTime = 0;
-      mp3.play();
-    }
-  });
 });
 
 const soundBoard = [
@@ -147,7 +62,7 @@ const soundBoard = [
   },
   {
     image: "./media/imagenes/metal-pipe.png",
-    text: "metal pipe 🦿",
+    text: "metal pipe 💥",
     audio: "./media/musica/metal-pipe-falling.mp3",
   },
   {
@@ -202,6 +117,59 @@ const soundBoard = [
   },
 ];
 
+function resetValues() {
+  let color = "gray";
+  notasArray.forEach((e) => {
+    e.value = "";
+  });
+
+  gradoArray.forEach((e) => {
+    e.style.backgroundColor = color;
+  });
+
+  avgColor.style.backgroundColor = color;
+  avg.innerText = "00";
+}
+
+reset.addEventListener("click", () => {
+  resetValues();
+});
+
+function color(ind) {
+  let color = "gray";
+  let value = notasArray[ind].value;
+  if (value >= 0) {
+    if (value >= 80) {
+      color = "#5afc4c";
+    } else if (value >= 60 && value <= 79) {
+      color = "#fae716";
+    } else {
+      color = "#fa3939";
+    }
+  }
+  gradoArray[ind].style.backgroundColor = color;
+  calculoTotal();
+}
+
+function calculoTotal() {
+  const [input1, input2, input3] = notasArray.map((nota) =>
+    parseInt(nota.value)
+  );
+  let color = "gray";
+  if (input1 && input2 && input3) {
+    const average = Math.round((input1 + input2 + input3) / 3);
+    avg.innerText = average;
+    if (average >= 80) {
+      color = "#5afc4c";
+    } else if (average >= 60 && average <= 79) {
+      color = "#fae716";
+    } else {
+      color = "#fa3939";
+    }
+  }
+  avgColor.style.backgroundColor = color;
+}
+
 function addSoundBoardData() {
   for (let i = 0; i < 12; i++) {
     imageArray[i].setAttribute("src", soundBoard[i].image);
@@ -210,7 +178,105 @@ function addSoundBoardData() {
   }
 }
 
+function scrollPage(y) {
+  window.scrollTo(0, y);
+}
+
+function messageSentAnimation() {
+  nombre.value = "";
+  email.value = "";
+  formMessage.value = "";
+
+  contactElement.forEach((ce) => {
+    ce.classList.add("hide-contact");
+  });
+
+  video.style.opacity = 1;
+  video.play();
+  floatingAmongus.classList.add("ejected");
+  floatingAmongus.style.opacity = 1;
+}
+
+function messageSent() {
+  sent.style.opacity = 1;
+  let index = 0;
+  let sentence = "";
+  const textInterval = setInterval(() => {
+    sentence += mensajeEnviado[index];
+    sent.innerText = sentence;
+    index++;
+    if (index === mensajeEnviado.length) {
+      clearInterval(textInterval);
+    }
+  }, 100);
+}
+
+function resetAnimation() {
+  floatingAmongus.classList.remove("ejected");
+  video.style.opacity = 0;
+  sent.style.opacity = 0;
+  sent.innerText = "";
+
+  contactElement.forEach((ce) => {
+    ce.classList.remove("hide-contact");
+  });
+
+  sentAudio.pause();
+  video.pause();
+  sentAudio.currentTime = 0;
+  video.currentTime = 0;
+}
+
 addSoundBoardData();
+
+calcNav.addEventListener("click", () => {
+  scrollPage(750);
+});
+
+sbNav.addEventListener("click", () => {
+  scrollPage(1500);
+});
+
+contactBtn.addEventListener("click", () => {
+  scrollPage(2250);
+});
+
+playButton.addEventListener("click", () => {
+  if (music.paused) {
+    music.play();
+    playPause.classList.add("fa-circle-pause");
+    playPause.classList.remove("fa-circle-play");
+    cd.classList.add("spin");
+    cd.classList.remove("stop-spin");
+  } else if (music.play) {
+    music.pause();
+    playPause.classList.add("fa-circle-play");
+    playPause.classList.remove("fa-circle-pause");
+    cd.classList.remove("spin");
+    cd.classList.add("stop-spin");
+  }
+});
+
+notasArray.forEach((nota) => {
+  nota.addEventListener("input", (e) => {
+    if (e.target.classList.contains("nota-input")) {
+      color(notasArray.indexOf(e.target));
+    }
+  });
+});
+
+soundBtnArray.forEach((button) => {
+  button.addEventListener("click", () => {
+    const ind = soundBtnArray.indexOf(button);
+    const mp3 = audioArray[ind];
+    if (mp3.paused) {
+      mp3.play();
+    } else {
+      mp3.currentTime = 0;
+      mp3.play();
+    }
+  });
+});
 
 contactForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -240,14 +306,15 @@ contactForm.addEventListener("submit", (e) => {
       formMessage.placeholder = "Please Enter a Message!";
     }
   } else {
-    nombre.value = "";
-    email.value = "";
-    formMessage.value = "";
-    contactElement.forEach((ce) => {
-      ce.classList.add("hide-contact");
-    });
-    video.style.opacity = 1;
-    floatingAmongus.classList.add("ejected");
+    messageSentAnimation();
+    setTimeout(() => {
+      sentAudio.play();
+    }, 750);
+    setTimeout(messageSent, 2500);
+    setTimeout(() => {
+      floatingAmongus.style.opacity = 0;
+    }, 4500);
+    setTimeout(resetAnimation, 7000);
   }
 });
 
