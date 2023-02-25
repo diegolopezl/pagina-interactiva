@@ -455,11 +455,37 @@ a {
 .contact-info {
   grid-area: info;
 }
+
 .run {
   grid-area: run;
 }
-.run > img {
-  transform: scale(0.5);
+
+.running-amongus {
+  height: 225px;
+  width: 160px;
+}
+
+.ghost {
+  opacity: 0;
+  position: absolute;
+
+  animation: float 3s infinite linear;
+  z-index: -1;
+}
+
+@keyframes float {
+  0% {
+    transform: translateX(-35%) translateY(-54%) scale(0.5);
+  }
+  50% {
+    transform: translateX(-35%) translateY(-52.5%) scale(0.5);
+  }
+  100% {
+    transform: translateX(-35%) translateY(-54%) scale(0.5);
+  }
+}
+.running-amongus:hover {
+  cursor: pointer;
 }
 
 .info-title {

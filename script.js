@@ -31,6 +31,9 @@ const floatingAmongus = document.querySelector(".amongus-float");
 const sent = document.querySelector(".enviado");
 const sentAudio = document.querySelector(".message-sent-audio");
 
+const running = document.querySelector(".running-amongus");
+const ghost = document.querySelector(".ghost");
+
 let mensajeEnviado = [
   "M",
   "e",
@@ -216,15 +219,15 @@ function resetAnimation() {
   video.style.opacity = 0;
   sent.style.opacity = 0;
   sent.innerText = "";
-
-  contactElement.forEach((ce) => {
-    ce.classList.remove("hide-contact");
-  });
-
-  sentAudio.pause();
-  video.pause();
-  sentAudio.currentTime = 0;
-  video.currentTime = 0;
+  setTimeout(() => {
+    sentAudio.pause();
+    video.pause();
+    sentAudio.currentTime = 0;
+    video.currentTime = 0;
+    contactElement.forEach((ce) => {
+      ce.classList.remove("hide-contact");
+    });
+  }, 500);
 }
 
 addSoundBoardData();
@@ -331,4 +334,11 @@ nombre.addEventListener("input", () => {
 formMessage.addEventListener("input", () => {
   formMessage.classList.remove("invalid-input");
   formMessage.placeholder = "Mensaje";
+});
+
+running.addEventListener("click", () => {
+  running.setAttribute("src", "./media/imagenes/dead.png");
+  running.style.width = "150px";
+  running.style.height = "150px";
+  ghost.style.opacity = 0.3;
 });
